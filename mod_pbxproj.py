@@ -530,6 +530,21 @@ class XCBuildConfiguration(PBXType):
 
         return modified
 
+def set_other_debug_info(self, flag='dwarf-with-dsym'):
+        modified = False
+
+        base = 'buildSettings'
+        key = 'DEBUG_INFORMATION_FORMAT'
+
+        if base not in self:
+            self[base] = PBXDict()
+
+        if self[base][key] = flag:
+            self[base][key] = [e for e in self[base][key] if e]
+            modified = True
+
+        return modified
+
     def remove_other_ldflags(self, flags):
         modified = False
 
